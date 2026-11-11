@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "name": "example-project",
+    "created": "2026-01-01",
+    "durationSeconds": 12,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "aspect": "16:9",
+    "language": "en",
+    "captionMode": "burned-in"
+  },
+  "tools": {
+    "blender": {
+      "version": "4.5.x",
+      "used": true,
+      "scripts": ["blender/scripts/build.py"],
+      "projectFile": "scene.blend",
+      "engine": "BLENDER_EEVEE_NEXT",
+      "frames": { "start": 1, "end": 360 }
+    },
+    "remotion": {
+      "version": "4.x",
+      "used": true,
+      "entry": "remotion/src/index.ts",
+      "compositionId": "Main",
+      "durationInFrames": 360
+    },
+    "manim": { "version": null, "used": false, "scenes": [] },
+    "ffmpeg": { "version": "7.x", "used": true }
+  },
+  "scenes": [
+    {
+      "id": "01-intro",
+      "startSeconds": 0,
+      "durationSeconds": 3,
+      "frames": [0, 90],
+      "tool": "remotion",
+      "source": "remotion/src/scenes/Intro.tsx",
+      "output": "renders/scenes/01-intro.mp4"
+    },
+    {
+      "id": "02-hero",
+      "startSeconds": 3,
+      "durationSeconds": 6,
+      "frames": [90, 270],
+      "tool": "blender",
+      "source": "blender/shots/hero.py",
+      "output": "renders/scenes/02-hero.mp4",
+      "alpha": false
+    },
+    {
+      "id": "03-outro",
+      "startSeconds": 9,
+      "durationSeconds": 3,
+      "frames": [270, 360],
+      "tool": "remotion",
+      "source": "remotion/src/scenes/Outro.tsx",
+      "output": "renders/scenes/03-outro.mp4"
+    }
+  ],
+  "audio": [
+    { "role": "music", "path": "audio/music/bed.mp3", "licence": "TBD", "source": "TBD" },
+    { "role": "voice", "path": null, "licence": null, "source": null }
+  ],
+  "assets": [
+    { "path": "assets/fonts/Inter.woff2", "kind": "font", "licence": "OFL-1.1", "source": "https://rsms.me/inter/" }
+  ],
+  "outputs": {
+    "primary": "output/final.mp4",
+    "master": "renders/final/master.mov",
+    "thumbnail": "output/thumbnail.png",
+    "captions": "output/captions.srt",
+    "report": "output/project-report.md"
+  },
+  "checks": {
+    "probe": false,
+    "blackdetect": false,
+    "freezedetect": false,
+    "audioPeak": false,
+    "visualInspection": false,
+    "inspectedBy": null
+  }
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-label="Blender Animation Skills for AI Agents">
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0e13"/>
+      <stop offset="1" stop-color="#0a1416"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14c8b1"/>
+      <stop offset="1" stop-color="#0a8f83"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="360" fill="url(#fade)"/>
+  <rect width="1280" height="360" fill="url(#grid)"/>
+  <rect x="0" y="0" width="7" height="360" fill="url(#accent)"/>
+
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif">
+    <text x="72" y="128" fill="#14c8b1" font-size="17" letter-spacing="7" font-weight="600">SKILL PACK · BLENDER · REMOTION · MANIM · FFMPEG</text>
+
+    <text x="70" y="212" fill="#f2f5f7" font-size="62" font-weight="700" letter-spacing="-1.5">Blender Animation Skills</text>
+    <text x="70" y="272" fill="#8d97a3" font-size="30" font-weight="400">for AI agents that ship real motion graphics.</text>
+
+    <g transform="translate(70, 306)">
+      <circle cx="4" cy="-6" r="4" fill="#14c8b1"/>
+      <text x="20" y="0" fill="#6c7783" font-size="19" letter-spacing="0.4">vibe-code 3D · kinetic type · math explainers · validated delivery</text>
+    </g>
+  </g>
+
+  <g transform="translate(1090, 96)" opacity="0.9">
+    <circle cx="60" cy="60" r="58" fill="none" stroke="#14c8b1" stroke-opacity="0.35" stroke-width="1.5"/>
+    <circle cx="60" cy="60" r="38" fill="none" stroke="#14c8b1" stroke-opacity="0.5" stroke-width="1.5"/>
+    <circle cx="60" cy="60" r="16" fill="#14c8b1" fill-opacity="0.85"/>
+    <circle cx="60" cy="-4" r="5" fill="#f2f5f7"/>
+    <circle cx="122" cy="80" r="4" fill="#14c8b1"/>
+  </g>
+</svg>

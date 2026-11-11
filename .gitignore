@@ -1,0 +1,47 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.uv/
+.python-version
+
+# Node / Remotion
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Rendered media (keep source, not kilos of frames)
+renders/
+previews/*.mp4
+*.blend1
+*.blend2
+frames/
+media/videos/
+media/images/
+media/audio/
+media/jOBs/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Large binaries
+*.exr
+*.mov
+*.mp4
+*.mkv
+*.wav
+*.flac
