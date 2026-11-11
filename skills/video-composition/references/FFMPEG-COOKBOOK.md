@@ -61,8 +61,8 @@ ffmpeg -framerate 30 -i renders/frame_%04d.png \
   -c:v libx264 -preset slow -crf 16 -pix_fmt yuv420p \
   -movflags +faststart output.mp4
 
-# video → PNG sequence
-ffmpeg -i input.mp4 -vsync 0 frames/frame_%04d.png
+# video → PNG sequence (no frame duplication/drop)
+ffmpeg -i input.mp4 -fps_mode passthrough frames/frame_%04d.png
 
 # video → high-quality JPEG sequence
 ffmpeg -i input.mp4 -q:v 2 frames/frame_%04d.jpg

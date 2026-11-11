@@ -149,6 +149,9 @@ Rules:
 ## 8. 3D scenes
 
 ```python
+from manim import *
+import numpy as np
+
 class Axes3DScene(ThreeDScene):
     def construct(self):
         self.set_camera_orientation(phi=65 * DEGREES, theta=-45 * DEGREES)

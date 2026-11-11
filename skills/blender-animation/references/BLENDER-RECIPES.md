@@ -69,16 +69,18 @@ def cylinder(name, radius=0.5, depth=2.0, segments=32, **kw):
                           radius1=radius, radius2=radius, depth=depth)
     return mesh_object(name, bm, **kw)
 
-def torus(name, major=1.0, minor=0.2, major_seg=48, minor_seg=16, **kw):
+def torus(name, major, minor, col, mat, major_seg=48, minor_seg=16,
+          location=(0, 0, 0)):
     verts, faces = [], []
     for i in range(major_seg):
         u = 2 * math.pi * i / major_seg
         for j in range(minor_seg):
             v = 2 * math.pi * j / minor_seg
-            x = (major + minor * math.cos(v)) * math.cos(u)
-            y = (major + minor * math.cos(v)) * math.sin(u)
-            z = minor * math.sin(v)
-            verts.append((x, y, z))
+            verts.append((
+                (major + minor * math.cos(v)) * math.cos(u),
+                (major + minor * math.cos(v)) * math.sin(u),
+                minor * math.sin(v),
+            ))
     for i in range(major_seg):
         for j in range(minor_seg):
             a = i * minor_seg + j
@@ -88,10 +90,15 @@ def torus(name, major=1.0, minor=0.2, major_seg=48, minor_seg=16, **kw):
             faces.append((a, b, c, d))
     me = bpy.data.meshes.new(name)
     me.from_pydata(verts, [], faces)
+    me.validate()
     me.update()
     ob = bpy.data.objects.new(name, me)
-    ob.location = kw.pop("location", (0, 0, 0))
-    kw.pop("col").objects.link(ob)
+    ob.location = location
+    col.objects.link(ob)
+    if mat:
+        ob.data.materials.append(mat)
+    for poly in me.polygons:
+        poly.use_smooth = True
     return ob
 ```
 
@@ -221,6 +228,8 @@ def key(ob, path, frame, value=None, index=-1, interp='BEZIER', easing='AUTO'):
                     if round(kp.co.x) == frame:
                         kp.easing = easing
 ```
+
+On Blender 4.4+, layered/slotted Actions may leave `action.fcurves` empty. If the helper finds no curves, iterate the channelbag (see `BLENDER-PLAYBOOK.md` §2) or use `action.layers[0].strips[0].channelbag(action.slots[0]).fcurves`.
 
 Overshoot without a physics engine:
 
